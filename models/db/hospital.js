@@ -3,7 +3,7 @@
  */
 (function () {
     module.exports = function (sequelize, DataTypes) {
-        return sequelize.define('hosptial',{
+        return sequelize.define('hospital',{
             id: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
