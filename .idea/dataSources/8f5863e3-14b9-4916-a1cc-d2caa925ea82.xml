@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="rotk">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="rotk">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="amdusias"/>
+    <schema id="3" name="ctsp"/>
+    <schema id="4" name="information_schema"/>
+    <schema id="5" name="lawkb"/>
+    <schema id="6" name="mysql"/>
+    <schema id="7" name="node"/>
+    <schema id="8" name="performance_schema"/>
+    <schema id="9" name="sakila"/>
+    <schema id="10" name="sys"/>
+    <table id="11" parent="1" name="OutCall"/>
+    <table id="12" parent="1" name="admin"/>
+    <table id="13" parent="1" name="appointments"/>
+    <table id="14" parent="1" name="crm_area"/>
+    <table id="15" parent="1" name="departments"/>
+    <table id="16" parent="1" name="doctors"/>
+    <table id="17" parent="1" name="hospitals"/>
+    <table id="18" parent="1" name="payments"/>
+    <table id="19" parent="1" name="users"/>
+    <column id="20" parent="11" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="21" parent="11" name="doc_id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="22" parent="11" name="OutCallDate">
+      <data-type>date|0</data-type>
+    </column>
+    <column id="23" parent="11" name="OutCallTime">
+      <data-type>tinyint(4)|0</data-type>
+    </column>
+    <column id="24" parent="11" name="Number">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="25" parent="11" name="Remain">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="26" parent="11" name="OutCallType">
+      <data-type>tinyint(4)|0</data-type>
+    </column>
+    <column id="27" parent="11" name="Status">
+      <data-type>tinyint(4)|0</data-type>
+    </column>
+    <column id="28" parent="11" name="fee">
+      <data-type>decimal(10)|0</data-type>
+    </column>
+    <column id="29" parent="11" name="CreateTime">
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="30" parent="11" name="remark">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <index id="31" parent="11" name="doc_id">
+      <columns>doc_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="32" parent="11" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="33" parent="11" name="outcall_ibfk_1">
+      <columns>doc_id</columns>
+      <ref-key>~.doctors.PRIMARY</ref-key>
+      <cascade-update-rule>update</cascade-update-rule>
+      <cascade-delete-rule>delete</cascade-delete-rule>
+    </foreign-key>
+    <column id="34" parent="12" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="35" parent="12" name="name">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="36" parent="12" name="password">
+      <data-type>char(32)|0</data-type>
+    </column>
+    <key id="37" parent="12" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="38" parent="13" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="39" parent="13" name="user_id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="40" parent="13" name="Outcall_id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="41" parent="13" name="createTime">
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="42" parent="13" name="Status">
+      <data-type>tinyint(1)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="43" parent="13" name="remark">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <index id="44" parent="13" name="Outcall_id">
+      <columns>Outcall_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="45" parent="13" name="user_id">
+      <columns>user_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="46" parent="13" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="47" parent="13" name="appointments_ibfk_2">
+      <columns>user_id</columns>
+      <ref-key>~.users.PRIMARY</ref-key>
+      <cascade-update-rule>update</cascade-update-rule>
+      <cascade-delete-rule>delete</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="48" parent="13" name="appointments_ibfk_1">
+      <columns>Outcall_id</columns>
+      <ref-key>~.OutCall.PRIMARY</ref-key>
+      <cascade-update-rule>update</cascade-update-rule>
+      <cascade-delete-rule>delete</cascade-delete-rule>
+    </foreign-key>
+    <column id="49" parent="14" name="area_id">
+      <mandatory>1</mandatory>
+      <data-type>smallint(5) unsigned|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="50" parent="14" name="parent_id">
+      <mandatory>1</mandatory>
+      <data-type>smallint(5) unsigned|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="51" parent="14" name="area_name">
+      <mandatory>1</mandatory>
+      <data-type>varchar(120)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="52" parent="14" name="area_type">
+      <mandatory>1</mandatory>
+      <data-type>tinyint(1)|0</data-type>
+      <default-expression>&apos;2&apos;</default-expression>
+    </column>
+    <index id="53" parent="14" name="area_id">
+      <columns>area_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="54" parent="14" name="area_type">
+      <columns>area_type</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="55" parent="14" name="parent_id">
+      <columns>parent_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="56" parent="14" name="PRIMARY">
+      <columns>area_id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="57" parent="15" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="58" parent="15" name="name">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="59" parent="15" name="pname">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="60" parent="15" name="information">
+      <data-type>text|0</data-type>
+    </column>
+    <key id="61" parent="15" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="62" parent="16" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="63" parent="16" name="name">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="64" parent="16" name="level">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="65" parent="16" name="hp_id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="66" parent="16" name="dpt_id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="67" parent="16" name="information">
+      <data-type>text|0</data-type>
+    </column>
+    <index id="68" parent="16" name="dpt_id">
+      <columns>dpt_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="69" parent="16" name="hp_id">
+      <columns>hp_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="70" parent="16" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="71" parent="16" name="doctors_ibfk_1">
+      <columns>hp_id</columns>
+      <ref-key>~.hospitals.PRIMARY</ref-key>
+      <cascade-update-rule>update</cascade-update-rule>
+      <cascade-delete-rule>delete</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="72" parent="16" name="doctors_ibfk_2">
+      <columns>dpt_id</columns>
+      <ref-key>~.departments.PRIMARY</ref-key>
+      <cascade-update-rule>update</cascade-update-rule>
+      <cascade-delete-rule>delete</cascade-delete-rule>
+    </foreign-key>
+    <column id="73" parent="17" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="74" parent="17" name="name">
+      <data-type>varchar(55)|0</data-type>
+    </column>
+    <column id="75" parent="17" name="level">
+      <data-type>tinyint(4)|0</data-type>
+    </column>
+    <column id="76" parent="17" name="area_id">
+      <mandatory>1</mandatory>
+      <data-type>smallint(5) unsigned|0</data-type>
+    </column>
+    <column id="77" parent="17" name="address">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="78" parent="17" name="information">
+      <data-type>text|0</data-type>
+    </column>
+    <column id="79" parent="17" name="telephoneNumber">
+      <data-type>char(14)|0</data-type>
+    </column>
+    <index id="80" parent="17" name="area_id">
+      <columns>area_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="81" parent="17" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="82" parent="17" name="hospitals_ibfk_1">
+      <columns>area_id</columns>
+      <ref-key>~.crm_area.PRIMARY</ref-key>
+      <cascade-update-rule>update</cascade-update-rule>
+      <cascade-delete-rule>delete</cascade-delete-rule>
+    </foreign-key>
+    <column id="83" parent="18" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="84" parent="18" name="appo_id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="85" parent="18" name="user_id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="86" parent="18" name="hp_id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="87" parent="18" name="createTime">
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="88" parent="18" name="fee">
+      <data-type>decimal(10)|0</data-type>
+    </column>
+    <column id="89" parent="18" name="remark">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <index id="90" parent="18" name="appo_id">
+      <columns>appo_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="91" parent="18" name="hp_id">
+      <columns>hp_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="92" parent="18" name="user_id">
+      <columns>user_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="93" parent="18" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="94" parent="18" name="payments_ibfk_1">
+      <columns>appo_id</columns>
+      <ref-key>~.appointments.PRIMARY</ref-key>
+      <cascade-update-rule>update</cascade-update-rule>
+      <cascade-delete-rule>delete</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="95" parent="18" name="payments_ibfk_2">
+      <columns>user_id</columns>
+      <ref-key>~.users.PRIMARY</ref-key>
+      <cascade-update-rule>update</cascade-update-rule>
+      <cascade-delete-rule>delete</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="96" parent="18" name="payments_ibfk_3">
+      <columns>hp_id</columns>
+      <ref-key>~.hospitals.PRIMARY</ref-key>
+      <cascade-update-rule>update</cascade-update-rule>
+      <cascade-delete-rule>delete</cascade-delete-rule>
+    </foreign-key>
+    <column id="97" parent="19" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="98" parent="19" name="name">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="99" parent="19" name="password">
+      <data-type>char(32)|0</data-type>
+    </column>
+    <column id="100" parent="19" name="ID_TYPE">
+      <data-type>tinyint(4)|0</data-type>
+    </column>
+    <column id="101" parent="19" name="ID_Number">
+      <data-type>varchar(18)|0</data-type>
+    </column>
+    <column id="102" parent="19" name="email">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="103" parent="19" name="telephoneNumber">
+      <data-type>char(14)|0</data-type>
+    </column>
+    <column id="104" parent="19" name="CreditRank">
+      <data-type>tinyint(4)|0</data-type>
+    </column>
+    <key id="105" parent="19" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+  </database-model>
+</dataSource>
