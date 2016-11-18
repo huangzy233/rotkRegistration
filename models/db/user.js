@@ -19,7 +19,7 @@
             },
             ID_TYPE: {
                 type: DataTypes.ENUM,
-                values: [{1:'居民身份证'}],
+                values: [{1:'居民身份证'},{2:'军官证'},{3:'护照'},{4:'港澳通行证'},{5:'台胞证'}],
                 defaultValue: {1:'居民身份证'}
             },
             ID_Number: {
@@ -41,7 +41,7 @@
                 defaultValue: 5
             }
         },{
-            underscore: true
+            underscored: true
         });
     };
 }).call(this);

@@ -14,7 +14,7 @@
             },
             level: {
                 type: DataTypes.ENUM,
-                values: [1,2,3,4,5,6,7,8,9]
+                values: [[1,'三级甲等'],2,3,4,5,6,7,8,9]
             },
             area_id: {
                 type: DataTypes.INTEGER,
