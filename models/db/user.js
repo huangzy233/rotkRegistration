@@ -26,7 +26,7 @@ var User = sequelize.define('user', {
     },
     ID_TYPE: {
         type: Sequelize.ENUM,
-        values: [{1:'居民身份证'}],
+        values: [1,2,3,4,5],
         defaultValue: {1:'居民身份证'}
     },
     ID_Number: {
