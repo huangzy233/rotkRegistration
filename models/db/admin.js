@@ -1,23 +1,29 @@
-/**
- * Created by apple on 2016/11/17.
- */
-(function () {
-    module.exports = function (sequelize, DataTypes) {
-        return sequelize.define('admin', {
-            id: {
-                type: DataTypes.INTEGER,
-                allowNull: false,
-                unique: true
-            },
-            name: {
-                type: DataTypes.STRING,
-                allowNull: false,
-                unique: true
-            },
-            password: {
-                type: DataTypes.STRING,
-                allowNull: false
-            }
-        })
+
+var Sequelize = require('sequelize');
+var sequelize = require('./db');
+
+var Admin = sequelize.define('admin', {
+    id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        unique: true,
+        primaryKey: true
+    },
+    name: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true
+    },
+    password: {
+        type: Sequelize.STRING,
+        allowNull: false
     }
-}).call(this);
+},{
+    underscore: true,
+    'timestamps':false,
+    'createdAt':false,
+    'updatedAt':false
+});
+///
+Admin.sync();
+
